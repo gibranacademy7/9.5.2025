@@ -1,16 +1,15 @@
-# This is a sample Python script.
+from openai import OpenAI
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+client = OpenAI(
+  api_key="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"
+)
 
+completion = client.chat.completions.create(
+  model="gpt-4o-mini",
+  store=True,
+  messages=[
+    {"role": "user", "content": "hello"}
+  ]
+)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(completion.choices[0].message.content);
